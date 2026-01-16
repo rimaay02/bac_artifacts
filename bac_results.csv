@@ -1,0 +1,34 @@
+No.,Repository,BAC Categories,Result,Filter Method
+1,allOrigins,Misconfig,confirmed,-
+2,cloudfront-auth,Misconfig,False Positive,penetration testing
+3,Cosmos-Server,IDOR,False Positive,manual inspection
+4,crate,Unprotected Route,confirmed,-
+5,cross-origin,Unprotected Route,False Positive,manual inspection
+6,express-es6-rest-api,Unprotected Route,False Positive,penetration testing
+7,fastify-jwt,Unprotected Route,False Positive,manual inspection
+8,ghChat,Unprotected Route,running project not success,-
+9,hapi-auth-jwt2,Misconfig,False Positive,manual inspection
+10,history,Unprotected Route,False Positive,penetration testing
+11,jsonwebtoken.github.io,Unprotected Route,False Positive,manual inspection
+12,learn-json-web-tokens,Unprotected Route,False Positive,manual inspection
+13,login-with,Misconfig,running project not success,-
+14,mern,Unprotected Route,False Positive,penetration testing
+15,mern-auth,Unprotected Route,False Positive,penetration testing
+16,mern-chat-app,Unprotected Route,False Positive,manual inspection
+17,nginx-jwt,Unprotected Route,confirmed,-
+18,node-express-mongodb-jwt-rest-api-skeleton,Unprotected Route,False Positive,penetration testing
+19,nodejs-jwt-authentication-sample,Unprotected Route,False Positive,manual inspection
+20,node_passport_login,"Unprotected Route, Misconfig",running project not success,-
+21,nunjucks,Unprotected Route,False Positive,manual inspection
+22,openscope,Unprotected Route,False Positive,penetration testing
+23,pm2panel,"IDOR, Unprotected Route, Misconfig",confirmed,-
+24,React-Redux-Flask,Unprotected Route,False Positive,penetration testing
+25,react-redux-jwt-auth-example,Unprotected Route,False Positive,manual inspection
+26,Sefinek-Blocklist-Collection,Unprotected Route,False Positive,manual inspection
+27,session,Unprotected Route,False Positive,penetration testing
+28,shadowsocks-manager,"Unprotected Route, Misconfig",running project not success,-
+29,SmartMirror,"IDOR, Unprotected Route",confirmed,-
+30,smart-mirror,Unprotected Route,running project not success,-
+31,stf,"IDOR, Unprotected Route, Misconfig",running project not success,-
+32,Universal-React-Apollo-Registration,"IDOR, Unprotected Route",running project not success,-
+33,wind,"IDOR, Unprotected Route",False Positive,penetration testing
