@@ -1,0 +1,18 @@
+rules:
+  - id: idor-param-used
+    languages: [javascript]
+    severity: WARNING
+    message: |
+      Potential IDOR: user-supplied parameter in route or query may access sensitive resources without access control checks.
+    metadata:
+      category: security
+      cwe: "CWE-639: Authorization Bypass Through User-Controlled Key"
+      owasp: "Broken Access Control"
+    patterns:
+      - pattern-either:
+          - pattern: req.params.$ID
+          - pattern: req.query.$ID
+      - pattern-inside: |
+          app.$METHOD($ROUTE, (req, res) => {
+            ...
+          })

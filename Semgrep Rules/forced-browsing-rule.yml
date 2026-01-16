@@ -1,0 +1,28 @@
+rules:
+  - id: forced-browsing-missing-auth-regex
+    message: "[Forced Browsing] Sensitive endpoint ($ROUTE) might be accessible without authentication."
+    severity: WARNING
+    metadata:
+      category: security
+      cwe:
+        - "CWE-284: Improper Access Control"
+      owasp:
+        - A01:2021 - Broken Access Control
+      vulnerability_class:
+        - Forced Browsing
+      likelihood: HIGH
+      impact: HIGH
+      confidence: MEDIUM
+      technology:
+        - express
+      references:
+        - https://owasp.org/www-community/attacks/Forced_browsing
+    languages:
+      - javascript
+      - typescript
+    patterns:
+      - pattern-either:
+          - pattern-regex: '\\.get\\(\\s*\"/(admin|config|settings|debug|internal|hidden|private|profile|user|account|manage)([\\/\\w-]*)?\"\\s*,\\s*function'
+          - pattern-regex: '\\.post\\(\\s*\"/(admin|config|settings|debug|internal|hidden|private|profile|user|account|manage)([\\/\\w-]*)?\"\\s*,\\s*function'
+    pattern-not: |
+      $APP.$METHOD($ROUTE, $AUTH, function($REQ, $RES) {...})

@@ -1,0 +1,31 @@
+rules:
+  - id: express-cookie-session-missing-attributes-v2
+    message: "Default session middleware settings: `secure`, `path`, or `domain` not properly set. Review your session cookie configuration."
+    severity: WARNING
+    languages:
+      - javascript
+      - typescript
+    metadata:
+      cwe:
+        - "CWE-522: Insufficiently Protected Credentials"
+      owasp:
+        - A02:2017 - Broken Authentication
+        - A04:2021 - Insecure Design
+      category: security
+      technology:
+        - express
+      subcategory:
+        - vuln
+      likelihood: HIGH
+      impact: LOW
+      confidence: MEDIUM
+      vulnerability_class:
+        - Cryptographic Issues
+    patterns:
+      - pattern-either:
+          - pattern-inside: require('cookie-session')
+          - pattern-inside: require('express-session')
+      - pattern: $SESSION(...)
+      - pattern-not-inside: $SESSION(<... {cookie:{secure:true}} ...>,...)
+      - pattern-not-inside: $SESSION(<... {cookie:{path:...}} ...>,...)
+      - pattern-not-inside: $SESSION(<... {cookie:{domain:...}} ...>,...)

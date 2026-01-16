@@ -1,0 +1,37 @@
+rules:
+  - id: express-unprotected-endpoint
+    message: "[BAC] Unprotected route detected — No authentication middleware found."
+    severity: WARNING
+    metadata:
+      category: security
+      cwe:
+        - "CWE-285: Improper Authorization"
+      owasp:
+        - A01:2021 - Broken Access Control
+      likelihood: HIGH
+      impact: HIGH
+      confidence: MEDIUM
+      technology:
+        - express
+      vulnerability_class:
+        - Broken Access Control
+    languages:
+      - javascript
+      - typescript
+    patterns:
+      - pattern-either:
+          # 1. app.get(), app.post(), etc. without middleware
+          - pattern: $APP.get($ROUTE, function($REQ, $RES) {...})
+          - pattern: $APP.post($ROUTE, function($REQ, $RES) {...})
+          - pattern: $APP.put($ROUTE, function($REQ, $RES) {...})
+          - pattern: $APP.delete($ROUTE, function($REQ, $RES) {...})
+          - pattern: $APP.options($ROUTE, function($REQ, $RES) {...})
+
+          # 2. router.route().get(), .post(), etc. without middleware
+          - pattern: $ROUTER.route($PATH).get(function($REQ, $RES) {...})
+          - pattern: $ROUTER.route($PATH).post(function($REQ, $RES) {...})
+          - pattern: $ROUTER.route($PATH).put(function($REQ, $RES) {...})
+          - pattern: $ROUTER.route($PATH).delete(function($REQ, $RES) {...})
+          - pattern: $ROUTER.route($PATH).options(function($REQ, $RES) {...})
+    pattern-not: |
+      $APP.$METHOD($ROUTE, $AUTH, function($REQ, $RES) {...})
